@@ -55,7 +55,7 @@ async def error_from_api(request, exception):
     retvalue = dict()
     retvalue[API_STATUS] = False
     retvalue[API_MESSAGE] = 'Error: %s' % exception
-    return json(retvalue)
+    return json(retvalue, status=exception.status_code)
 
 
 bp_part_one = Blueprint(name='one', url_prefix='/one')
